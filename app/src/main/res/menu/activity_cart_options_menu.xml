@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/activity_cart_list_option_send"
+        android:icon="@drawable/ic_action_send_list"
+        app:showAsAction="always"
+        android:title="enviar lista de compras" />
+    <item
+        android:id="@+id/activity_cart_list_option_clear"
+        android:title="limpar" />
+</menu>
