@@ -9,19 +9,12 @@
     android:theme="@style/Theme.ListaDeCompras"
     tools:context=".ui.activity.CartList">
 
-    <androidx.cardview.widget.CardView
+    <ListView
+        android:id="@+id/activity_cart_list_of_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:backgroundTint="@color/primary_color"
-        app:cardCornerRadius="8dp">
-
-        <ListView
-            android:id="@+id/activity_cart_list_of_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="10" />
-    </androidx.cardview.widget.CardView>
+        android:divider="@android:color/transparent"
+        tools:listitem="@layout/cart_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/activity_cart_list_fab_new_item"
