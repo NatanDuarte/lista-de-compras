@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,14 +20,14 @@ import com.natanduarte.listadecompras.R;
 import com.natanduarte.listadecompras.database.ProductDatabase;
 import com.natanduarte.listadecompras.database.dao.ProductDAO;
 import com.natanduarte.listadecompras.model.Product;
-
+import com.natanduarte.listadecompras.ui.adapter.ProductAdapter;
 
 import java.util.List;
 
 public class CartList extends AppCompatActivity {
 
     private static final String TITLE = "Lista de compras";
-    private ArrayAdapter<Product> adapter;
+    private ProductAdapter adapter;
     private ProductDAO dao;
 
     @Override
@@ -84,6 +83,7 @@ public class CartList extends AppCompatActivity {
             Product product = adapter.getItem(menuInfo.position);
             dao.delete(product);
             adapter.remove(product);
+            adapter.notifyDataSetChanged();
         }
         return super.onContextItemSelected(item);
     }
@@ -132,11 +132,7 @@ public class CartList extends AppCompatActivity {
         ListView cartListView = findViewById(R.id.activity_cart_list_of_product);
         final List<Product> products = dao.selectAll();
 
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                products
-        );
+        adapter = new ProductAdapter(this, products);
         cartListView.setAdapter(adapter);
 
         cartListView.setOnItemClickListener(
